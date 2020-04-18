@@ -1,6 +1,6 @@
 from utils.sql2python import SQL2PYTHON
 import sqlite3 as sql
-
+from add_command import add_command
 conn = sql.connect('./database/cook_book.db')
 cursor = conn.cursor()
 
@@ -51,8 +51,13 @@ while(True):
         cursor.execute("""INSERT INTO diets(name) 
                         VALUES(?)""",(name,))
         print("Diet added")
-    elif command == "edit recipes":
-        pass
+    elif command == "add into recipes":
+        sub_command = input("""Choose a command from these command
+                            add ingredients
+                            add diets
+                            add utensils
+        """)
+        add_command(cursor, sub_command)
 
     elif command == "quit":
         break
