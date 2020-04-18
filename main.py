@@ -12,6 +12,8 @@ while(True):
     print("""Enter a command from the following options: 
             create recipe
             create ingredient
+            create diet
+            create utensil
             quit
             """)
     command = input().lower()
@@ -26,9 +28,32 @@ while(True):
                         VALUES(?,?,?)""",(name,total_calories,instructions))
 
         print("Recipe added.")
-    if command == "quit":
-        break
 
+    elif command == "create ingredient":
+        name = input("Enter the Name of the ingredient: ")
+        shelf_life = input("Enter the shelf life of ingredient in days: ")
+        shelf_life = int(shelf_life)
+        calories_density = input("Enter the calorie density for the recipe: ")
+        calories_density = int(calories_density)
+        cursor.execute("""INSERT INTO ingredients(name, shelf_life, calorie_density) 
+                        VALUES(?,?,?)""",(name,shelf_life,calories_density))
+        print("Ingredient added")
+
+    elif command == "create utensil":
+        name = input("Enter the Name of the utensil: ")
+        cursor.execute("""INSERT INTO utensils(name) 
+                        VALUES(?)""",(name))
+        print("Utensil added")
+
+    elif command == "create diet":
+        name = input("Enter the Name of the diet: ")
+        cursor.execute("""INSERT INTO diets(name) 
+                        VALUES(?)""",(name))
+        print("Diet added")
+    elif command == "quit":
+        break
+    else:
+        print("Command not in system")
 conn.commit()
 conn.close()
         

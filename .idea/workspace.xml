@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d70c0076-6abb-4f5d-8f77-b81fee2fb60f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/create_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,27 +77,42 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="707" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587236209792">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.-277.1536.824/1920.6.1920.1040@0.0.1920.1040" timestamp="1587236209792" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1587236495602">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1587239175612">
+      <screen x="1920" y="6" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.-277.1536.824/1920.6.1920.1040@0.0.1920.1040" timestamp="1587236495602" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1587236495602">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.-277.1536.824/1920.6.1920.1040@1920.6.1920.1040" timestamp="1587239175612" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1587239175612">
+      <screen x="1920" y="6" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.-277.1536.824/1920.6.1920.1040@0.0.1920.1040" timestamp="1587236495602" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1587236495602">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.-277.1536.824/1920.6.1920.1040@1920.6.1920.1040" timestamp="1587239175612" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1587239175612">
+      <screen x="1920" y="6" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.-277.1536.824/1920.6.1920.1040@0.0.1920.1040" timestamp="1587236495602" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1587236495602">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.-277.1536.824/1920.6.1920.1040@1920.6.1920.1040" timestamp="1587239175612" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1587239175612">
+      <screen x="1920" y="6" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.-277.1536.824/1920.6.1920.1040@0.0.1920.1040" timestamp="1587236495602" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.-277.1536.824/1920.6.1920.1040@1920.6.1920.1040" timestamp="1587239175612" />
     <state x="2576" y="350" key="com.intellij.ide.util.TipDialog" timestamp="1587229930401">
       <screen x="1920" y="6" width="1920" height="1040" />
     </state>
