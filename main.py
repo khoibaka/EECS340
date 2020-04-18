@@ -14,6 +14,7 @@ while(True):
             create ingredient
             create diet
             create utensil
+            edit recipe
             quit
             """)
     command = input().lower()
@@ -42,16 +43,20 @@ while(True):
     elif command == "create utensil":
         name = input("Enter the Name of the utensil: ")
         cursor.execute("""INSERT INTO utensils(name) 
-                        VALUES(?)""",(name))
+                        VALUES(?)""",(name,))
         print("Utensil added")
 
     elif command == "create diet":
         name = input("Enter the Name of the diet: ")
         cursor.execute("""INSERT INTO diets(name) 
-                        VALUES(?)""",(name))
+                        VALUES(?)""",(name,))
         print("Diet added")
+    elif command == "edit recipes":
+        pass
+
     elif command == "quit":
         break
+
     else:
         print("Command not in system")
 conn.commit()
