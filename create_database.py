@@ -3,12 +3,11 @@ from utils.sql2python import SQL2PYTHON
 
 def main():
     sql_parser = SQL2PYTHON('./database/cook_book.db')
-    sql_parser.run('CREATE TABLE IF NOT EXISTS ingredients (name TEXT PRIMARY KEY, shelf_life INTEGER, calorie_density '
-                  'INTEGER)')
+    
     sql_parser.run(
         'CREATE TABLE IF NOT EXISTS ingredients (name TEXT PRIMARY KEY, shelf_life INTEGER, calorie_density INTEGER)')
     sql_parser.run(
-        'CREATE TABLE IF NOT EXISTS recipes (id INTEGER PRIMARY KEY, name TEXT, total_calories INTEGER, instruction '
+        'CREATE TABLE IF NOT EXISTS recipes (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, total_calories INTEGER, instruction '
         'TEXT)')
     sql_parser.run(
         'CREATE TABLE IF NOT EXISTS diets (name TEXT PRIMARY KEY)')
