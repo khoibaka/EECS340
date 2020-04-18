@@ -24,6 +24,8 @@ while(True):
 
         cursor.execute("""INSERT INTO recipes(name, total_calories, instruction) 
                         VALUES(?,?,?)""",(name,total_calories,instructions))
+
+        print("Recipe added.")
     if command == "quit":
         break
 
