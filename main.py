@@ -118,7 +118,7 @@ while(True):
 
             name = input("Enter the name of the diet you are searching for: ").lower()
 
-            cursor.execute("SELECT * FROM diets WHERE name = ?", (name,))
+            cursor.execute("SELECT r.name FROM recipes r, diets d, suitable s WHERE d.name = ? AND s.dietName = d.name AND r.id = s.recipesID", (name,))
             rows = cursor.fetchall()
             for row in rows:
                 print("             " +row[0])
