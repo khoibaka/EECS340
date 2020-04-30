@@ -1,7 +1,7 @@
 from utils.sql2python import SQL2PYTHON
 import sqlite3 as sql
 from add_command import add_command
-from utils.helper import find_id_from_name
+from utils.helper import find_id_from_name, show_recipe_from_id
 conn = sql.connect('./database/cook_book.db')
 cursor = conn.cursor()
 
@@ -90,7 +90,7 @@ while(True):
             if(recipe_name == 'cancel'):
                 break
             recipe_id = find_id_from_name(rows,recipe_name)
-        print(rows[recipe_id - 1])
+        show_recipe_from_id(cursor,recipe_name)
 
 
     elif command == "quit" or command == '7':
