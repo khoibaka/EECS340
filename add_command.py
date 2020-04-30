@@ -45,11 +45,6 @@ def add_command(cursor, command,recipe_id):
         time = input("Utensil using time in minute: ")
         time = int(time)
         action = input("Action with utensil: ")
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 14576f3bdbcf627ae987d157f5785eba2e425c1f
         temperature = input("Temprerature for that action: ")
         temperature = int(temperature)
 

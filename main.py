@@ -13,9 +13,8 @@ while(True):
             (3) create diet
             (4) create utensil
             (5) edit recipe
-            (6) show recipe
-            (7) search
-            (8) quit
+            (6) search
+            (7) quit
             """)
     command = input().lower()
     
@@ -78,24 +77,10 @@ while(True):
         add_command(cursor, sub_command, recipe_id)
         conn.commit()
 
-    elif command == 'show recipe' or command == '6':
-        cursor.execute("SELECT * FROM recipes")             #SQL
-        print("choose a recipe to show:")
-        rows = cursor.fetchall()
-        for row in rows:
-            print("             " +row[1])
-        recipe_name = input().lower()
-        recipe_id = find_id_from_name(rows,recipe_name)
-        while(recipe_id == -1):
-            recipe_name = input("Cannot find recipe, check spelling and type again or type cancel to exit:")
-            if(recipe_name == 'cancel'):
-                break
-            recipe_id = find_id_from_name(rows,recipe_name)
-        show_recipe_from_id(cursor,recipe_name)
 
 
 
-    elif command == "search" or command == '7':
+    elif command == "search" or command == '6':
         print("""Enter a type of search from the following options: 
             (1) recipe name
             (2) diet name
@@ -112,7 +97,7 @@ while(True):
             cursor.execute("SELECT * FROM recipes WHERE name = ?", (name,))
             rows = cursor.fetchall()
             for row in rows:
-                print("             " +row[1])
+                show_recipe_from_id(cursor, row[1])
         
         elif command == 'diet name' or command == '2':
 
@@ -163,7 +148,7 @@ while(True):
                 print("             " +row[0])
             show = input("Enter the name of the recipe you want to show: ")
 
-    elif command == "quit" or command == '8':
+    elif command == "quit" or command == '7':
         break
 
     else:
