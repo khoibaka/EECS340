@@ -43,7 +43,7 @@ def add_command(cursor, command,recipe_id):
             utensil_name = input("Cannot find utensil, check spelling and type again or type 'cancel' to exit:")
         time = input("Utensil using time in minute: ")
         time = int(time)
-        action = input("Action with utensil: ")7
+        action = input("Action with utensil: ")
         
         temperature = input("Temprerature for that action: ")
         temperature = int(temperature)

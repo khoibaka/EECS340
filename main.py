@@ -14,15 +14,16 @@ while(True):
             (4) create utensil
             (5) edit recipe
             (6) show recipe
-            (7) quit
+            (7) search
+            (8) quit
             """)
     command = input().lower()
     
     if command == "create recipe" or command == '1':
-        name = input("Enter the Name of the recipe: ")
+        name = input("Enter the Name of the recipe: ").lower()
         total_calories = input("Enter the total calories in the recipe: ")
         total_calories = int(total_calories)
-        instructions = input("Enter the instructions for the recipe: ")
+        instructions = input("Enter the instructions for the recipe: ").lower()
 
         cursor.execute("""INSERT INTO recipes(name, total_calories, instruction) 
                         VALUES(?,?,?)""",(name,total_calories,instructions))
@@ -31,7 +32,7 @@ while(True):
         conn.commit()
 
     elif command == "create ingredient" or command == '2':
-        name = input("Enter the Name of the ingredient: ")
+        name = input("Enter the Name of the ingredient: ").lower()
         shelf_life = input("Enter the shelf life of ingredient in days: ")
         shelf_life = int(shelf_life)
         calories_density = input("Enter the calorie density for the ingredient: ")
@@ -42,14 +43,14 @@ while(True):
         conn.commit()
 
     elif command == "create utensil" or command == '4':
-        name = input("Enter the Name of the utensil: ")
+        name = input("Enter the Name of the utensil: ").lower()
         cursor.execute("""INSERT INTO utensils(name)        
                         VALUES(?)""",(name,))               #SQL
         print("Utensil added")
         conn.commit()
 
     elif command == "create diet" or command == '3':
-        name = input("Enter the Name of the diet: ")
+        name = input("Enter the Name of the diet: ").lower()
         cursor.execute("""INSERT INTO diets(name)           
                         VALUES(?)""",(name,))               #SQL
         print("Diet added")
@@ -61,7 +62,7 @@ while(True):
         rows = cursor.fetchall()
         for row in rows:
             print("             " +row[1])
-        recipe_name = input()
+        recipe_name = input().lower()
         recipe_id = find_id_from_name(rows,recipe_name)
         while(recipe_id == -1):
             recipe_name = input("Cannot find recipe, check spelling and type again or type cancel to exit:")
@@ -83,7 +84,7 @@ while(True):
         rows = cursor.fetchall()
         for row in rows:
             print("             " +row[1])
-        recipe_name = input()
+        recipe_name = input().lower()
         recipe_id = find_id_from_name(rows,recipe_name)
         while(recipe_id == -1):
             recipe_name = input("Cannot find recipe, check spelling and type again or type cancel to exit:")
@@ -93,7 +94,76 @@ while(True):
         print(rows[recipe_id - 1])
 
 
-    elif command == "quit" or command == '7':
+
+    elif command == "search" or command == '7':
+        print("""Enter a type of search from the following options: 
+            (1) recipe name
+            (2) diet name
+            (3) single ingredient
+            (4) two ingredients
+            (5) one ingredient excluding another
+            """)
+        command = input().lower()
+        
+        if command == 'recipe name' or command =='1':
+            
+            name = input("Enter the name of the recipe you are searching for: ").lower()
+
+            cursor.execute("SELECT * FROM recipes WHERE name = ?", (name,))
+            rows = cursor.fetchall()
+            for row in rows:
+                print("             " +row[1])
+        
+        elif command == 'diet name' or command == '2':
+
+            name = input("Enter the name of the diet you are searching for: ").lower()
+
+            cursor.execute("SELECT * FROM diets WHERE name = ?", (name,))
+            rows = cursor.fetchall()
+            for row in rows:
+                print("             " +row[0])
+
+        elif command == 'single ingredient' or command == '3':
+            name = input("Enter the name of the ingredient you are searching for: ").lower()
+    
+            cursor.execute("""SELECT r.name 
+                                FROM recipes r, contains c, ingredients i 
+                                WHERE i.name = ? AND i.name = c.ingredientName AND r.id = c.recipesID""", (name,))
+            rows = cursor.fetchall()
+            for row in rows:
+                print("             " +row[0])
+            
+        elif command== 'two ingredients' or command == '4':
+            name1 = input("Enter the name of the first ingredient you are searching for: ").lower()
+            name2 = input("Enter the name of the second ingredient you are searching for: ").lower()
+    
+            cursor.execute("""SELECT r.name 
+                                FROM recipes r, contains c1, contains c2, ingredients i1, ingredients i2 
+                                WHERE i1.name = ? AND i2.name = ? AND r.id = c1.recipesID AND r.id = c2.recipesID AND 
+                                c1.ingredientName = i1.name AND c2.ingredientName = i2.name""", (name1,name2))
+            rows = cursor.fetchall()
+            for row in rows:
+                print("             " +row[0])
+
+        elif command== 'one ingredient excluding another' or command == '5':
+            name1 = input("Enter the name of the ingredient you are searching for: ").lower()
+            name2 = input("Enter the name of the ingredient you are excluding: ").lower()
+    
+            cursor.execute("""SELECT r.name 
+                                FROM recipes r, contains c, ingredients i
+                                WHERE r.id = c.recipesID AND i.name = ? AND i.name = c.ingredientName
+                                EXCEPT SELECT r2.name
+                                        FROM recipes r2, contains c2, ingredients i2
+                                        WHERE r2.id = c2.recipesID AND c2.ingredientName = i2.name AND i2.name = ?
+                                
+                                
+                                """, (name1,name2))
+            rows = cursor.fetchall()
+            for row in rows:
+                print("             " +row[0])
+            show = input("Enter the name of the recipe you want to show: ")
+
+    elif command == "quit" or command == '8':
         break
 
     else:
