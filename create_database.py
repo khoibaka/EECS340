@@ -21,7 +21,7 @@ def main():
         'REFERENCES diets(name), FOREIGN KEY (recipesID) REFERENCES recipes(id))')
     sql_parser.run(
         'CREATE TABLE IF NOT EXISTS utensils_usage (utensilName TEXT, recipesID INTEGER, time INTEGER, action TEXT, '
-        'temparature INTEGER, FOREIGN KEY (utensilName) REFERENCES utensils(name), FOREIGN KEY (recipesID) REFERENCES '
+        'temperature INTEGER, FOREIGN KEY (utensilName) REFERENCES utensils(name), FOREIGN KEY (recipesID) REFERENCES '
         'recipes(id))')
     sql_parser.close()
 
